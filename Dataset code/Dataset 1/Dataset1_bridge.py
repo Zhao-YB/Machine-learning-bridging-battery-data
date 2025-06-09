@@ -131,11 +131,6 @@ for i, df in enumerate(filtered_eis_dfs):
     if df_filtered.empty:
         continue
 
-    if len(df_filtered) >= 2:
-        # Check for max z_re_comp_mOhm before splitting
-        if df_filtered['z_re_comp_mOhm'].max() > 30:
-            continue  # Skip this DataFrame
-
         split_index = len(df_filtered) // 2
 
         X = df_filtered.iloc[split_index:][['z_re_comp_mOhm', 'z_im_comp_mOhm', 't_avg_degC', 'SOC']].values
